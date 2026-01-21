@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <meta name="description" content="QR code component" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Frontend Mentor | QR code component</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      *,
+      ::before,
+      ::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --unit: 0.0625rem; /* 1px / 16 = 0.0625rem */
+        --clr-slate-900: #1f314f;
+        --clr-slate-500: #68778d;
+        --clr-slate-300: #d5e1ef;
+        --clr-white: #fff;
+        --spacing-500: calc(40 * var(--unit));
+        --spacing-300: calc(24 * var(--unit));
+        --spacing-200: calc(16 * var(--unit));
+      }
+
+      .block {
+        display: block;
+      }
+
+      .w-screen {
+        width: 100vw;
+      }
+
+      .w-full {
+        width: 100%;
+      }
+
+      .w-min {
+        width: min-content;
+      }
+
+      .w-72 {
+        width: 18rem;
+      }
+
+      .w-80 {
+        width: 20rem; /* 320px */
+      }
+
+      .h-screen {
+        height: 100vh;
+      }
+
+      .h-full {
+        height: 100%;
+      }
+
+      .h-min {
+        height: min-content;
+      }
+
+      .h-90 {
+        height: 90%;
+      }
+
+      .flex {
+        display: flex;
+      }
+
+      .flex-col {
+        flex-direction: column;
+      }
+
+      .flex-wrap {
+        flex-wrap: wrap;
+      }
+
+      .item-center {
+        justify-content: center;
+        align-items: center;
+      }
+
+      .mb-4 {
+        margin-bottom: 1rem; /* 16px */
+      }
+
+      .mb-6 {
+        margin-bottom: 1.5rem; /* 24px */
+      }
+
+      .p-500 {
+        padding: var(--spacing-500);
+      }
+
+      .p-300 {
+        padding: var(--spacing-300);
+      }
+
+      .p-200 {
+        padding: var(--spacing-200);
+      }
+
+      .px-4 {
+        padding-left: 1rem; /* 16px */
+        padding-right: 1rem; /* 16px */
+      }
+
+      .py-4 {
+        padding-top: 1rem; /* 16px */
+        padding-bottom: 1rem; /* 16px */
+      }
+
+      .pt-4 {
+        padding-top: 1rem; /* 16px */
+      }
+
+      .pb-6 {
+        padding-bottom: 1.5rem; /* 24px */
+      }
+
+      .pb-10 {
+        padding-bottom: 2.5rem; /* 40px */
+      }
+
+      .border {
+        border: 1px solid var(--clr-white);
+      }
+
+      .rounded {
+        border-radius: 0.5rem;
+      }
+
+      .rounded-xl {
+        border-radius: 0.625rem;
+      }
+
+      .rounded-2xl {
+        border-radius: 1.25rem;
+      }
+
+      .shadow-card {
+        box-shadow: 0 calc(25 * var(--unit)) calc(25 * var(--unit)) 0
+          rgb(0 0 0 / 0.05);
+      }
+
+      .bg-slate-300 {
+        background-color: var(--clr-slate-300);
+      }
+
+      .bg-slate-500 {
+        background-color: var(--clr-slate-500);
+      }
+
+      .bg-slate-900 {
+        background-color: var(--clr-slate-900);
+      }
+
+      .bg-white {
+        background-color: var(--clr-white);
+      }
+
+      .font-sans {
+        font-family: 'Outfit', sans-serif;
+      }
+
+      .font-regular {
+        font-weight: 400;
+      }
+
+      .font-bold {
+        font-weight: 700;
+      }
+
+      .tracking-normal {
+        letter-spacing: 0em;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      .text-slate-500 {
+        color: var(--clr-slate-500);
+      }
+
+      .text-slate-900 {
+        color: var(--clr-slate-900);
+      }
+
+      .object-cover {
+        object-fit: cover;
+      }
+
+      .text-preset-1 {
+        font-size: calc(22 * var(--unit));
+        /* There is a 0.8px difference in height compared to the design draft */
+        /* line-heihgt: 1.2; */
+        /* Best solution */
+        line-height: 1.182;
+      }
+
+      .text-preset-2 {
+        font-size: calc(15 * var(--unit));
+        line-height: 1.4;
+        letter-spacing: calc(0.2 * var(--unit));
+      }
+
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body class="w-full h-screen flex flex-col item-center bg-slate-300">
+    <main class="container flex flex-col flex-wrap item-center w-full h-full">
+      <div
+        class="card shadow-card w-min h-min px-4 pt-4 pb-10 rounded-2xl bg-white"
+      >
+        <img
+          class="block w-72 object-cover rounded-xl mb-6"
+          src="images/image-qr-code.png"
+          alt="qr code"
+        />
+        <div class="px-4">
+          <p
+            class="text-slate-900 font-sans font-bold text-preset-1 text-center mb-4 tracking-normal"
+          >
+            Improve your front-end skills by building projects
+          </p>
+          <p
+            class="text-preset-2 font-sans h-min font-regular text-center text-slate-500"
+          >
+            Scan the QR code to visit Frontend Mentor and take your coding
+            skills to the next level
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="uuu#">yunxiaodao</a>.
+    </div>
+  </body>
+</html>
